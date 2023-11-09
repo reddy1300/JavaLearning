@@ -128,7 +128,7 @@ Here are some common naming conventions:
 * In Java, primitive types are the most basic data types.
 * The eight primitive data types in java are shown in the table below, listed by the type of data stored for each:
 
-  ![](D:\Draw.io\java primitive types .png)
+  ![Java primitive types](D:\Draw.io\java primitive types .png)
 
 
   
