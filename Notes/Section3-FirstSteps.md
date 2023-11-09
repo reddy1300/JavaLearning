@@ -128,7 +128,7 @@ Here are some common naming conventions:
 * In Java, primitive types are the most basic data types.
 * The eight primitive data types in java are shown in the table below, listed by the type of data stored for each:
 
-  ![Java primitive types](/Images/javaprimitivetypes.png)
+  ![Java primitive types](/Images/java_primitive_types.png)
 * Consider these types as the building blocks of data manipulation.
 * Primitive data types are simply placeholders in memory for a value.
 
@@ -168,7 +168,7 @@ Here are some common naming conventions:
 
 - The wrapper clasess for char and int, Character and Integer respectively, are the only two that differ in name.
 
-  ![Wrapper Classes](/Images/primitive data type wrapper classes.png)
+  ![Wrapper Classes](/Images/primitive_data_type_wrapper_classes.png)
 
 **Overflow and Underflow:**
 - Wrapper Classes gives us ways to perform operations on Primitive data type.
@@ -212,7 +212,7 @@ Here are some common naming conventions:
 **byte, short, int, long:**
 * these are the four primitive data types to store whole numbers.
 
-  ![java primitive data types to store whole numbers](/Images/java primitive data types for whole numbers.png)
+  ![java primitive data types to store whole numbers](/Images/java_primitive_data_types_for_whole_numbers.png)
 * The byte supports the smallest range and the long supports the largest range.
 
 **The byte data type:**
@@ -237,7 +237,7 @@ Here are some common naming conventions:
 
 **Size of Primitive types and Width:**
 
-  ![size of primitive types and width](/Images/size of primitive data types and width.png)
+  ![size of primitive types and width](/Images/size_of_primitive_data_types_and_width.png)
 
 * A byte can store 256 numbers and occupies eight bits, and has a width of 8. 
 * A short can store a large range of numbers and occupies 16 bits, and has a width of 8.
