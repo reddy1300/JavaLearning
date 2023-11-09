@@ -50,8 +50,8 @@ Jshell runs in a terminal (or on the command line for windows) and is useful for
  - [https://docs.oracle.com/en/java/javase/17/jshell/introduction-jshell.html#GUID-630F27C8-1195-4989-9F6B-2C51D46F52C8](https://docs.oracle.com/en/java/javase/17/jshell/introduction-jshell.html#GUID-630F27C8-1195-4989-9F6B-2C51D46F52C8)
 
 **CMD (JShell):**
-> jshell  - open jshell prompt
-> /help intro - Display Jshell introductory information.
-> /help  - Display all commands present in JShell.
-> /list -all - Display built-in code or Libraries of code, that Jshell includes in its environment.
-> To write multiple lines of code we can use {}.
+- jshell  - open jshell prompt
+- /help intro - Display Jshell introductory information.
+- /help  - Display all commands present in JShell.
+- /list -all - Display built-in code or Libraries of code, that Jshell includes in its environment.
+- To write multiple lines of code we can use {}.
