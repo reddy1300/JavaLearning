@@ -55,3 +55,8 @@ Jshell runs in a terminal (or on the command line for windows) and is useful for
 - /help  - Display all commands present in JShell.
 - /list -all - Display built-in code or Libraries of code, that Jshell includes in its environment.
 - To write multiple lines of code we can use {}.
+- jshell > `System.out.print("Hello World");`  -- This is called a statement in Java.
+- /var - to see all created variables in history
+- Ctrl + C in Windows and Ctrl + D on MAC or Linux machine, should cancel what you are in the middle of, and get you
+    back to the Jshell prompt.
+- /exit or /ex will end your Jshell session, if you get stuck.
