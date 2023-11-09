@@ -129,7 +129,137 @@ Here are some common naming conventions:
 * The eight primitive data types in java are shown in the table below, listed by the type of data stored for each:
 
   ![Java primitive types](/Images/javaprimitivetypes.png)
+* Consider these types as the building blocks of data manipulation.
+* Primitive data types are simply placeholders in memory for a value.
+
+**Integer:** Integer is a whole number, meaning it doesn't contain a fractional element. or decimal element.
+* There's a specified range of values allowed for the **int**, which is true for most data types.
+* What this means is, that the allowable range of values is NOT infinite.
+* There's a defined minimum, and maximum value, for each numeric data type, meaning you can't assign a number bigger or 
+  smaller (outside that range).
+
+**Get Primitive data type ranges:**
+
+**Using the + sign in System.out.print:** The + sign when used in System.out.print will print different data types 
+  together as a single line os text.
+
+- `int myMinIntValue = Integer.MIN_VALUE;`   This will give us that the minimum value you can assign to an int, is 
+  **-2147483648**. we can't assign less than this value to integer data type.
+- `System.out.print("Integer Minimum Value" + myMinIntValue);` - Here we are printing a label before numeric integer value.
+- Whatever follows the plus sign in **System.ot.print** here, is converted to a **String** by java, and concatenated to the 
+  **String** before it.
+- `System.out.print("Integer Minimum Value" + Integer.MIN_VALUE);`
+
+- `int myMinIntValue = Integer.MAX_VALUE;`   This will give us that the maximum value you can assign to an int, is
+  **-2147483648**. we can't assign less than this value to integer data type.
+- `System.out.print("Integer value range(" + Integer.MIN_VALUE + " to " +  Integer.MIN_VALUE + ")" );`
 
 
-  
+### Classes:
 
+**What is a class:** A class is a building block for object-oriented programming, and allows us to build custom data types.
+
+### Wrapper Classes: 
+
+* java uses the concept of a wrapper class, for all of its eight primitive data types.
+* A wrapper class provides simple operations, as well as some basic information about the primitive data type, which 
+  cannot be stored on the primitive itself.
+* We saw that MIN_VALUE, and MAX_VALUE, are elements of this basic information, for the int data type.
+
+- The wrapper clasess for char and int, Character and Integer respectively, are the only two that differ in name.
+
+  ![Wrapper Classes](/Images/primitive data type wrapper classes.png)
+
+**Overflow and Underflow:**
+- Wrapper Classes gives us ways to perform operations on Primitive data type.
+- If we try and put a value larger than the maximum value into an int, you'll create something called an Overflow situation.
+- Similarly, if we try and put a value smaller than the minimum value into an int, you'll create something called an 
+  Underflow situation.
+- **These situations are also known as integer wraparounds.**
+- The Maximum value, when it overflows, wraps around to the minimum value, and just continues processing without an error.
+- The Minimum value, when it Underflows, wraps around to the maximum value, and just continues processing without an error.
+- ### Note: This is not usually behaviour you really want, and as a developer, you need to be aware that this can happen,
+   and choose the appropriate data type.
+- `System.out.print(myMaxIntValue + 1);` output - -2147483648. is add one to the maximum value, which technically 
+  shouldn't possible, because myMaxIntValue already contains the maximum value of an integer.
+- a negative number? This is called an Overflow - meaning, we tried to put too large a number into the space allocated 
+  by the computer for an integer, Now it didn't fit, but the computer tried to fit it anyway (Instead of throwing an error)
+  and by doing that, it overflowed.
+- The reverse is also true meaning if we tried to subtract from a int minimum value. This concept is called Underflow.
+- So `System.out.print(myMinIntValue - 1);` output - +2147483647.
+
+
+**When will you get an Overflow? When will you get an error?**
+
+* int myMaxIntValue = +2147483648; throw an error like integer number is too large.
+* An integer wraparound event, either an overflow or underflow, can occur in java when you are using expression that are
+  not a simple literal value.
+* The Java compiler does,t attempt to evaluate the expression to determine its value, so it DOES NOT give an error.
+* `int willThisCompile = (Integer.MAX_VALUE + 1);`
+* `int willThisCompile = (2147483647 + 1);`
+* Even though we are using numeric literals in the expression, the compiler still won't try to evaluate this expression, 
+  and the code will compile, resulting in an overflow condition.
+
+**What does an underscore mean in a numeric literal?**
+* In java, you cannot put commas in a numeric literal.
+* For example, the following is not a valid syntax.
+* `int myMaxIntTest = 2,147,483,647;`
+* So java provided an alternative way to improve readability, the underscore.
+* `int myMaxIntTest = 2_147_483_647;` 
+* we can put the underscore anywhere we might want a comma, but we can't use an underscore at the start or end of the 
+  numeric literal.
+
+**byte, short, int, long:**
+* these are the four primitive data types to store whole numbers.
+
+  ![java primitive data types to store whole numbers](/Images/java primitive data types for whole numbers.png)
+* The byte supports the smallest range and the long supports the largest range.
+
+**The byte data type:**
+- `System.out.print("Integer value range(" + Byte.MIN_VALUE + " to " +  Byte.MIN_VALUE + ")" );`
+* The minimum value of a byte is -128.
+* The maximum value of a byte is 127.
+* Given its small range, you probably won't be using the byte data type a lot.
+* May be one reason to use a byte is, if you had a requirement to store a lot of numbers that are within that range, and
+  ypu want to save memory or try to boost performance.
+* A smaller data type takes up less space, and can be quicker to access.
+* Generally this is less of a concern today, because of speed of modern computers, but certainly was a factor when java 
+  was first created.
+* Another reason to use byte instead of int, is if you wanted to document that you are only expecting, or using, a small
+  range of values.
+
+**The short data type:**
+- `System.out.print("Integer value range(" + Integer.MIN_VALUE + " to " +  Integer.MIN_VALUE + ")" );`
+* The minimum value of a short is -32768.
+* The maximum value of a short is +32767.
+* Both the byte and short, have the same overflow and underflow issue as the int data type has, but obviously with their
+  own range of numbers.
+
+**Size of Primitive types and Width:**
+
+  ![size of primitive types and width](/Images/size of primitive data types and width.png)
+
+* A byte can store 256 numbers and occupies eight bits, and has a width of 8. 
+* A short can store a large range of numbers and occupies 16 bits, and has a width of 8.
+* An int, has a much large range as we know, and occupies 32 bits, and has a width of 32.
+
+**The long data type:**
+
+**Using a numeric literal character suffix:**
+* The number 100, by default, is an int.
+* Java allows certain numeric literals to have s suffix appended to the value, to force it to be a different data type 
+  from the default type.
+* The long is one if these types, and it's suffix is an 'L'.
+* This is one of the few instances java is not case-sensitive, a lowercase 'l' or an uppercase 'L' at the end of a whole
+  number mean the same thing - the number is a long.
+* `long myLongValue = 100L;`
+* To check the width of a data type we can use Long.size;
+* `long bigLongLiteralValue = 1_147_483_647;` - will work fine without an error. because long can store higher values so
+  java automatically converts to int max number to long.
+* `long bigLongLiteralValue = 1_147_483_647_888;` - will throw error integer number too large when we not give suffix 'l'
+  or 'L'. Because without suffix java still treating number as an int due to default java data type is int.
+
+**When is L required?**
+* Aq numeric literal that exceeds Integer.MAX_VALUE must use the 'L' suffix.
+* We cannot create a numeric literal in java, that exceeds Integer.MAX_VALUE, without using the 'L' suffix, we'll always 
+  get the error 'integer number too large'.
