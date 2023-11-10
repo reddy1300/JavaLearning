@@ -438,7 +438,7 @@ Boolean variable name examples:
 
 **Incrementing by One:**
 
-  ![Increment by One](/Images/Increment by one.png)
+  ![Increment by One](/Images/Increment_by_one.png)
   
 **- Compound assignments neglect possible error like `int result = 10; result -= 5.5` output: 4
 - But when we use `int result = result - 5.5;` - output: possible lossy conversion. because result is an int type.
