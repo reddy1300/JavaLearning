@@ -263,3 +263,72 @@ Here are some common naming conventions:
 * Aq numeric literal that exceeds Integer.MAX_VALUE must use the 'L' suffix.
 * We cannot create a numeric literal in java, that exceeds Integer.MAX_VALUE, without using the 'L' suffix, we'll always 
   get the error 'integer number too large'.
+
+**Casting:** Which is a way to get java to treat a variable of one type like a different data type.
+
+**Valid Syntax :** 
+* short myMinShortValue = Short.MIN_VALUE; int myMinIntValue = Integer.MIN_VALUE; - Print output in two different lines.
+* byte myMinByteValue = Byte.MIN_VALUE, myMaxByteValue = Byte.MAX_VALUE; - print two variables with values in two lines.
+
+**Rules for declaring multiple variables in one statement:**
+* we cannot declare variables with different data types in a single statement.
+* if we declare multiple variables  of the same data type in a single statement, you must specify the data type only 
+  once before any variable names.
+
+
+- `int myTotal = (myMinIntValue /2);` - output: -1073741824
+- `byte myNewByteValue = (myMinByteValue / 2);` - ouput: incompatible types possible lossy conversion from int to byte.
+
+**Assigning expression to variables with data types that don't match:**
+* The java compiler does not attempt to evaluate the value, in a variable, when it's used in a calculation, so it doesn't
+  know if the value fits, and throws an error.
+* `byte myNewByteValue = (myMinByteValue / 2);`
+* If our calculation uses literal values, java can figure out the end result at compile time, and whether it fits into 
+  the variable, and won't throw an error if it does.
+* `byte myNewByteValue = (-128 / 2);`
+* In both examples, an int result being returned from the calculation, but in the second example, java knows the returned 
+  value can fit into a byte.
+
+**So how do we let java know it fit:**
+
+* **Casting in Java:** Casting means to treat or convert a number, from one type to another. we put the type we want the
+  number to be, in parentheses like this:
+* `(byte) (myMinByteValue / 2);'
+* Other languages also support casting it is general thing in all languages.
+* `byte myNewByteValue = (byte) (myMinByteValue / 2);`
+
+**Float and Double:**
+
+* Unlike whole numbers, floating-point numbers have fractional parts that we express with a decimal point.
+* Floating point numbers(float & double) are also known as real numbers.
+* We use a floating-point number when we need more precision in calculations.
+* The double is the java's default type for any decimal or real number.
+
+**Single and Double Precision:**
+* Precision refers to the format and amount of space occupied by the relevant type.
+* This table shows the width of each of the floating point types and their ranges.
+
+  ![float and double precision](Images/Primitiva data types Float and Double Precision.png)
+
+* The double data type can be specified as a numeric literal with a suffix of either lowercase 'd', or uppercase 'D', but
+  because doubles are the default in java, the suffix is optional to use.
+* On the other hand, the float data type can be specified as a numeric literal with a suffix of lowercase 'f', or uppercase
+  'F'. This suffix is required if you are assigning a real number to a variable that was declared with a float type.
+* `float myFloatValue = 5.25;` - output: possible lossy conversion from double to float. because java default for real numbers
+  is double. so we have to use casting.
+* `float myFloatValue = (float) 5.25;`
+
+
+**Why is the double a better choice in most circumstances?**
+* First, it's actually faster to process on many modern computers.
+* That's because computers have, at chi-p level, the functionality to actually deal with these double numbers faster than
+  the equivalent float.
+* Second, the java libraries that we'll get into later in the course, particularly math functions, and are often written
+  to process doubles and not floats, and to return the result as a double.
+* The creators of java selected the double because it's more precise, and can handle a large range of numbers.
+
+**Precise Calculations:**
+* In general, float and double are great for general floating point operations.
+* But neither should be used when precise calculations are required - this is due to a limitation with how floating point
+  numbers are stored, and not a java problem as such.
+* Java has a class called **BigDecimal** that overcomes this.
