@@ -308,7 +308,7 @@ Here are some common naming conventions:
 * Precision refers to the format and amount of space occupied by the relevant type.
 * This table shows the width of each of the floating point types and their ranges.
 
-  ![float and double precision](Images/Primitiva data types Float and Double Precision.png)
+  ![float and double precision](/Images/Primitiva_data_types_Float_and_Double_Precision.png)
 
 * The double data type can be specified as a numeric literal with a suffix of either lowercase 'd', or uppercase 'D', but
   because doubles are the default in java, the suffix is optional to use.
