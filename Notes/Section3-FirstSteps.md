@@ -332,3 +332,114 @@ Here are some common naming conventions:
 * But neither should be used when precise calculations are required - this is due to a limitation with how floating point
   numbers are stored, and not a java problem as such.
 * Java has a class called **BigDecimal** that overcomes this.
+
+**Single Precision:**
+* In Java, single precision is represented by the float data type.
+* It is a 32-bit floating-point number.
+* It provides approximately 7 decimal digits of precision
+
+**Double Precision:**
+* In Java, double precision is represented by the double data type.
+* It is a 64-bit floating-point number.
+* It provides approximately 15 decimal digits of precision.
+
+**Character:**
+
+  ![String and char comparison](/Images/String_and_char_comparision.png)
+
+**Is there a good use for the char data type in today's computing world:**
+* Why would we want to use a variable that only allows you to store one character?
+* One example might be to store the last key pressed by a user in a game.
+* Another example might be to loop programmatically through the letters in an alphabet.
+* A char occupies two bytes of memory, or 16 bits, and thus has a width of 16.
+* The reason it's not just a single byte, is that a char is stored as a 2 byte number, similar to the short.
+
+**This number gets mapped to a single character by java:**
+* So, when you print a char, you will see the mapped character, and not the representative number.
+* And you can use single quotes and a character literal to assign a value to a char, which is much simpler than looking
+  up the representative number.
+* If this mapping not done by java, we have to go and look up the value in some lookup table, each time we want to set or
+  get a char.
+* Some instances, characters aren't represented on the keyboard, or you may have reason to use special characters in other
+  languages. To do this, java supports a unicode value for characters, which you can use to set a char value.
+
+**Unicode:** 
+- Unicode is an international encoding standard for use with different languages and scripts by which each letter, digit,
+  or symbol is assigned a unique numeric value that applies across different platforms and programs.
+- In english alphabet, we've got the letters A through Z, meaning only 26 characters are needed in total to represent the
+  entire English Alphabet.
+- But other languages need more characters, and often a lot more. Unicode allows us to represent these languages.
+- The way it works, is that by using a combination of the two bytes that a char takes up in memory. it can represent any
+  one of 65,535 different types of characters.
+- [https://symbl.cc/en/unicode/table/](https://symbl.cc/en/unicode/table/)
+- `char myUnicode = '\u0044';` represent D. or `char myUnicode = 68;`
+- any literal we can form by using **Literal, Unicode, or Decimal**.
+
+**Boolean Primitive Type:**
+* A boolean value allows for two opposite choices, true or false, yes or no, one or zero.
+* For boolean we can set to two values only either true or false.
+
+**Why would you start your boolean variable name with the prefix 'is'?**
+
+* Developers will often use the word, is as a prefix for a boolean variable name.
+* This creates a name that seems to ask a question, which makes reading the code more intuitive.
+* But other prefixes can be just as valid.
+
+Boolean variable name examples:
+- isCustomerOverTwentyOne
+- isEligibleForDiscount
+- hasValidLicense
+- hasChildren
+
+
+**So what is a string?**
+* A String is a class that contains a sequence of characters.
+* A String is very much like a primitive type in terms of how we use it, meaning we can just assign a String literal to 
+  a variable.
+* `String sample = "This is a String";`
+* **String Concatenation:** 
+* In java, the + symbol is an operator which can mean addition, if used for numbers.
+* But it also means concatenation when applied to a String.
+* A String + anything else, gives us a String as a result, concatenating anything after the String as text to the initial 
+  String.
+* String class is different compare to other classes. because String are **Immutable**.
+* Immutable means that you can't change a String after it's created.
+* `lastString = lastString + myInt;` in the case of the code we've written, the value 120.47 is technically not appended
+  to the current contents of lastString.
+* Instead, a new String is created automatically by java. The new String consists of the previous value of **lastString**
+  plus a textual representation of the double value 120.47
+* The net result, is that our variable, **lastString**, has the concatenated value. However, Java created a new String in the 
+  process, and the old one will get discarded from memory automatically.
+* This is quite inefficient. Because a new String gets created for every operation appending values like this is inefficient
+  and generally not recommended.
+* So Java provides another class that is more efficient if you are doing a lot of appending of multiple string or values.
+
+**String vs StringBuilder:**
+* The String class is immutable, but can be used much like a primitive data type.
+* The StringBuilder class is mutable, but does not share the String's special features, such as being able to assign it 
+  a String literal ot use the + operator on it.
+* Both are classes, but the String is in a special category in the java language.
+
+**Operators, Operands and Expression:**
+
+**So what are operators?**
+- Operators in java are special symbols that perform specific operations on one, two, or three operands, and then return
+  a result.
+
+**So what is an Operand?**
+- An operand is a term used to describe any object that is manipulated by an operator.
+- Variable names used instead of values are also called operands.
+
+**The + Operator on char:**
+- When you use the plus operator with chars, it is these numbers in memory that get added together.
+- The characters values don't get concatenated.
+- `char firstChar = 'A'; char secondChar = 'B';`
+- `System.out.print(firstChar + secondChar');` output: 131
+
+**Incrementing by One:**
+
+  ![Increment by One](/Images/Increment by one.png)
+  
+**- Compound assignments neglect possible error like `int result = 10; result -= 5.5` output: 4
+- But when we use `int result = result - 5.5;` - output: possible lossy conversion. because result is an int type.
+- So have to use type conversion `int result = (int) result - 5.5;`**
