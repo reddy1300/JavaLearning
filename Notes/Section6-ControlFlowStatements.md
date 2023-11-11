@@ -42,8 +42,8 @@ Valid Switch Value Types:
 
 **Traditional Switch Statement vs Enhanced Switch Statement:**
 
-|   Traditional Switch Statement          |    
-          :----:                                                 
+**Traditional Switch Statement:**
+                                                          
 `   int value = 1;                                 
     switch (value){
         case 1:
@@ -60,8 +60,8 @@ Valid Switch Value Types:
         break;
         }`
 
-|   Enhanced Switch Statement          |    
-          :----:                                                 
+**Enhanced Switch Statement:**  
+                                                         
 `   int value = 1;
     switch (value){
         case 1 -> System.out.println("Value was 1");
