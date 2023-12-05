@@ -22,7 +22,7 @@
 
 **Introduction:**
 - An unwanted, unexpected event that disturbs the normal flow of the program is called an exception.
-- For graceful termination, it is highly recommended to write an exception-handling program.
+- For graceful termination, it is highly recommended writing an exception-handling program.
 - Defining an alternative way to continue our programming normally.
 - Exception handling doesn't mean repairing an exception we have to provide an alternative way to continue rest of the 
   program normally is the concept of exception handling.
@@ -48,18 +48,33 @@ rest of the program normally
   terminating the thread.
 
 `public class Main{
-
 public static void main(String[] args) {
 doStuff();
 }
 public static void doStuff(){
 doMoreStuff();
 }
-
 public static void doMoreStuffStuff(){
 System.out.println("Hello");
 }
 }`
 
+
  ![run time stack mechanism](/Images/run-time-stack-mechanism.png)
+
+**Default Exception Handling in JAVA:**
+
+`public class Main{
+public static void main(String[] args) {
+doStuff();
+}
+public static void doStuff(){
+doMoreStuff();
+}
+public static void doMoreStuffStuff(){
+System.out.println(10/0);
+}
+}`
+
+
 
