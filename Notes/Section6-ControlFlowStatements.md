@@ -72,3 +72,48 @@ Valid Switch Value Types:
             
         default -> System.out.println("there is no matching value");
         }` 
+
+- Default label is required in most conditions. but we have exception when we use enum.
+
+**yield:**
+- If we use code blocks in switch statement inside block to return an expression we don't have to use return instead we 
+  have to use yield.
+- The word yield is a new keyword introduced for the switch expression to turn a value back.
+- always yield we have to use within a code block.
+
+**Looping:**
+- Looping lets us execute the code a multiple number of times.There are several looping statements in java.
+- The statements will continue to execute a block of code repetitively, until a condition, or some set of condition is met.
+
+**Java supports three looping statements:**
+
+![looping statements](/Images/looping_statements.png)
+
+**The for statement:**
+
+- The for statement is often referred to as the for loop.
+- It repeatedly loops something until a condition is satisfied.
+- `for (init; expression; increment{}`
+- **These parts are all optional and consists of the following:**
+- The initialization section declares or sets state, usually declaring and initializing a loop variable, before the loop
+  begins processing.
+- The expression section, once it becomes false, will end the loop processing.
+- The increment section is executed after the expression is tested, and is generally the place where the loop variable 
+  is incremented.
+
+**A Class:**
+- A class can be described as 
+- a custom data type.
+- a special code block that contains methods.
+
+**An Object:**
+- An object is called an instance of a particular class.
+
+**Declaring and instantiating a new object from a Class:**
+- The most common way to create an object, is to use the new keyword.
+- The new keyword creates an instance, and you can sometimes pass data, when creating an instance, to set up data on that
+  object.
+
+**Reading data from the console:**
+
+ ![read data from console](/Images/Reading_data_from_console.png)
