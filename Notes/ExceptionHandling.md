@@ -18,20 +18,20 @@
 17) Various Possible Compile Time Errors in Exception Handling
 18) Customised or User Defined Exceptions
 19) Top 10 Exceptions
-20) 1.7 Version Enhancements - Try with resources - multi catch block
+20) 1.7 Version Enhancements - Try with resources - multi-catch block
 
 **Introduction:**
-- An unwanted, unexpected event that disturb the normal flow of the program is called exception.
-- For graceful termination it is highly recommended writing exception handling program.
+- An unwanted, unexpected event that disturbs the normal flow of the program is called an exception.
+- For graceful termination, it is highly recommended to write an exception-handling program.
 - Defining an alternative way to continue our programming normally.
 - Exception handling doesn't mean repairing an exception we have to provide an alternative way to continue rest of the 
   program normally is the concept of exception handling.
-- For example our programming requirement is to read data from remote file locating at london at run time if london file
-  is not available our program should not terminate abnormally. we have to provide some local file to continue rest of the 
-  program normally. this way of defining alternative is nothing but exception handling.
+- For example, our programming requirement is to read data from a remote file located at London at run time if london file
+  is not available our program should not terminate abnormally. we have to provide some local files to continue the rest of the 
+  program normally. this way of defining alternatives is nothing but exception handling.
 
 `try {
-read data from remote file located at london
+read data from a remote file located in london
 }
 catch(FileNotFoundException e)
 {
@@ -40,10 +40,10 @@ rest of the program normally
 }`
 
 **Runtime Stack Mechanism:**
-- For every thread JVM will create a run time stack. each and every method call performed by that thread will br stored 
+- For every thread, JVM will create a run-time stack. every method call performed by that thread will be stored 
   in the corresponding stack.
-- Each entry in the stack called stack frame or activation record.
-- After completing every method call the corresponding entry from the stack will be renoved.
+- Each entry in the stack is called a stack frame or activation record.
+- After completing every method call the corresponding entry from the stack will be removed.
 - After completing all method calls the stack will become empty and the empty stack will be destroyed by JVM just before 
   terminating the thread.
 
