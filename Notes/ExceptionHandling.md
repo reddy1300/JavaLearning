@@ -30,14 +30,16 @@
   is not available our program should not terminate abnormally. we have to provide some local files to continue the rest of the 
   program normally. this way of defining alternatives is nothing but exception handling.
 
-`try {
+`
+try {
 read data from a remote file located in london
 }
 catch(FileNotFoundException e)
 {
 Use local file & Continue
 rest of the program normally
-}`
+}
+`
 
 **Runtime Stack Mechanism:**
 - For every thread, JVM will create a run-time stack. every method call performed by that thread will be stored 
@@ -47,7 +49,8 @@ rest of the program normally
 - After completing all method calls the stack will become empty and the empty stack will be destroyed by JVM just before 
   terminating the thread.
 
-`public class Main{
+`
+public class Main{
 public static void main(String[] args) {
 doStuff();
 }
@@ -57,14 +60,16 @@ doMoreStuff();
 public static void doMoreStuffStuff(){
 System.out.println("Hello");
 }
-}`
+}
+`
 
 
  ![run time stack mechanism](/Images/run-time-stack-mechanism.png)
 
 **Default Exception Handling in JAVA:**
 
-`public class Main{
+`
+public class Main{
 public static void main(String[] args) {
 doStuff();
 }
@@ -74,12 +79,15 @@ doMoreStuff();
 public static void doMoreStuffStuff(){
 System.out.println(10/0);
 }
-}`
+}
+`
 
-`Exception in thread "main" java.lang.ArithmeticException: / by zero
+`
+Exception in thread "main" java.lang.ArithmeticException: / by zero
 at Main.doMoreStuff(Main.java:11)
 at Main.doStuff(Main.java:7)
-at Main.main(Main.java:4)`
+at Main.main(Main.java:4)
+`
 
 - Inside a method if any exception occurs the method in which it is raised is responsible to create an exception object
   by including the following information.
@@ -96,16 +104,21 @@ at Main.main(Main.java:4)`
   main method also abnormally and removes corresponding entry from the stack.
 - Then JVM hand-overs responsibility of exception handling to default exception handler, which is the part of JVM.
 - Default Exception Handler prints exception information in the following format and terminates program abnormally.
-` Exception in thread "xxx" Name of exception: Description
- Stack trace`
+` 
+Exception in thread "xxx" Name of exception: Description
+ Stack trace
+`
 
-`Exception in thread "main" java.lang.ArithmeticException: / by zero
+`
+Exception in thread "main" java.lang.ArithmeticException: / by zero
 at Main.doMoreStuff(Main.java:11)
 at Main.doStuff(Main.java:7)
-at Main.main(Main.java:4)`
+at Main.main(Main.java:4)
+`
 
 
-`public class Main{
+`
+public class Main{
 public static void main(String[] args) {
 doStuff();
 }
@@ -116,7 +129,8 @@ System.out.println(10/0);
 public static void doMoreStuffStuff(){
 System.out.println("Hello");
 }
-}`
+}
+`
 
 o/p: Hello
 Exception in thread "main" java.lang.ArithmeticException: / by zero
@@ -138,7 +152,8 @@ If all methods terminates normally then only program termination is normal termi
   not available then we will get run time exception saying FileNotFoundException.
 - If FileNotFoundException occurs we can provide local file and continue rest of the program normally.
 
-`try
+`
+try
 {
 Read data from remote file locating at london
 }
@@ -156,3 +171,62 @@ rest of the program normally
 - System admin or server admin is responsible to increase heap memory.
 
   ![exception hierarchy](/Images/exception-hierarchy.png)
+
+**Checked Exceptions VS Unchecked Exceptions:**
+- The exceptions which are checked by compiler for smooth execution of the program are called checked exceptions.
+- Ex: HallTicketMissingExceptions, PenNotWorkingException, FileNotFoundExceptions Ext
+- In our program if there is a chance of raising checked exception then compulsory we should handle that checked exception.
+  [Either by try-catch or throws keyword] otherwise we will get compile time error.
+- The exceptions which are not checked by compiler whether the programmer handling or not such type of exceptions are called
+  unchecked exceptions.
+- For Ex: ArithmeticExceptions, BombBlastExceptions ext.
+- **Note:** Whether it is checked or unchecked every exception occurs at run time only. There is no chance of occurring any
+  exception at compile time.
+- **Note:** Runtime exception and its child classes, error, and it's child classes are unchecked except these remaining are
+  checked.
+
+**Fully Checked VS Partially Checked:**
+- A checked exception is said to be fully checked if and only if all it's child classes also checked.
+- Ex: IOException, InterruptedException
+- A checked exception is said to be partially checked if and only if some of its child classes are unchecked.
+- Ex: Exception, Throwable
+
+**Note:** The only possible partially checked exceptions in java are Exception, Throwable.
+
+**Describe The behaviour of following exceptions:**
+- IOExceptions -> Checked -> Fully Checked
+- RuntimeExceptions -> Unchecked
+- InterruptedException -> FullyChecked
+- Error -> Unchecked
+- Throwable -> Partially Checked
+- ArithmeticException -> Unchecked
+- NullPointerExceptions -> Unchecked
+- Exception -> Partially Checked
+- FileNotFoundException -> Fully Checked
+
+**Customised Exception Handling by using try-catch:**
+- It is highly recommended handling exceptions.
+- The code which may rise an exception is called risky code, and we have to define that code inside try block and corresponding 
+  handling code we have to define inside catch block.
+
+`
+try
+{
+Rusky Code
+}
+catch (Exception e)
+{
+Handling Code
+}
+`
+
+`
+try
+{
+System.out.println(10/0);
+}
+catch (ArithmeticException e)
+{
+System.out.println(10/2);
+}
+`
