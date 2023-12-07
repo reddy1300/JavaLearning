@@ -230,3 +230,258 @@ catch (ArithmeticException e)
 System.out.println(10/2);
 }
 `
+
+**Control Flow in Try-Catch:** 
+`
+try
+{
+Statement1;
+Statement2;
+Statement3;
+}
+catch (X e)
+{
+Statement4;
+}
+Statement5;
+`
+
+**Case1:** If there is no exception 1, 2, 3, 5 Normal Termination.
+**Case2:** If an exception raised at Statement 2 and corresponding catch block is matched  1, 4, 5 Normal Termination.
+**Case3:** If an exception raised at Statement 2 and corresponding catch block is not matched  1 Abnormal Termination.
+**Case4:** If an exception raised at Statement 4 or 5 then it always Abnormal Termination.
+
+**Note:**
+- Within the try block if anywhere exception raised then rest of the try block won't be executed even though we handled 
+  that exception. Hence, within the try block we have to take only risky code and length of try block should be as less as possible.
+- In addition to try block there may be a chance of raising an exception in catch and finally blocks.
+- If any statement which is not part of try block and raises an exception then it is always an abnormal termination.
+
+**Methods to Print Exception Information:**
+
+- Throwable class defines the following methods to print exception information.
+1) printStackTrace(); -- Name of exception: Description  Stack trace
+2) toString();        -- Name of exception: Description
+3) getMessage();      -- Description
+
+- Internally default exception handler use printStackTrace(); method to print exception information to the console.
+`
+try
+{
+System.out.println(10/0);
+}
+catch (ArithmeticException e)
+{
+e.printStackTrace(); // Name of exception: Description  Stack trace
+System.out.println(e); // Name of exception: Description
+System.out.println(e.toString()); // Name of exception: Description
+System.out.println(e.getMessage()); //Description
+}
+`
+
+`
+java.lang.ArithmeticException: / by zero
+at Main.main(Main.java:6)
+java.lang.ArithmeticException: / by zero
+java.lang.ArithmeticException: / by zero
+/ by zero
+`
+
+**Try with Multiple catch blocks:**
+- The way of handling an exception is varied from exception to exception. Hence, for every exception type it is highly 
+  recommended taking separate catch block that is try with multiple catch blocks is always possible and recommended to use.
+- It is not a good practice to use single catch block for different types of exception.
+`
+  try
+  {
+  Risky Code
+  }
+  catch (ArithmeticException e)
+  {
+  Perform alternative arithmetic operation
+  }
+  catch (SQLException e)
+  {
+  Use MySql db instead of Oracle DB
+  }
+  catch (FileNotFoundException e)
+  {
+  Use local file instead of remote file
+  }
+  catch (Exception e)
+  {
+  Default exception handling code
+  }
+`
+
+- If try with multiple catch blocks present then the order of catch blocks is important. we have to take child first and
+  then parent. Otherwise, we will get compile time error saying java: exception xxx(Ex-java.lang.ArithmeticException) has 
+  already been caught.
+`
+  try
+  {
+  System.out.println(10/0);
+  }
+  catch (Exception e)
+  {
+  System.out.println("exception");
+  }
+  catch (ArithmeticException e)
+  {
+  System.out.println("exception");
+  }
+`
+
+- We can't declare two catch blocks for the same exception. Otherwise, we will get compile time error.
+`
+  try
+  {
+  System.out.println(10/0);
+  }
+  catch (ArithmeticException e)
+  {
+  System.out.println("exception");
+  }
+  catch (ArithmeticException e)
+  {
+  System.out.println("exception");
+  }
+`
+
+**Final:**
+- final is a modifier applicable for classes, methods and variables.
+- If a class is declared as final, then we can't extend that class. That is we can't create child class for that class.
+  That is inheritance is not possible for final classes.
+- If a method is final then we can't override that method in the child class.
+- If a variable declared as final, then we can't perform are-assignment for that variable.
+
+**Finally:**
+- Finally, is a block always is associated with try-catch to maintain clean-up code.
+`
+  try
+  {
+  Risky code
+  }
+  catch (ArithmeticException e)
+  {
+  Handling Code
+  }
+  finally {
+  Clean-up code
+
+}
+`
+- The speciality of finally block is it will always be executed irrespective of whether exception raised or not and whether 
+  handled or not.
+
+**Finalize():**
+- finalize is a method always invoked by Garbage Collector just before destroying an object to perform clean-up activities.
+- Once finalize method completes immediately GC destroys that object.
+
+**Note:** Finally block is responsible to perform clean up activities related to try block. that is what ever resources 
+  we opened as the part of try block will be closed inside finally block.
+- Whereas finalized method is responsible to perform clean-up activities related to object. That is whatever resources 
+  associated with object will be de-allocated before destroying an object by using finalize method.
+
+**Various possible combinations of try-catch-finally:**
+- In try-catch-finally order is important.
+- Whenever we are writing try compulsory we should write either catch or finally.Otherwise, we will get compile time error.
+  That is try without catch or finally is invalid.
+- Whenever we are writing catch block compulsory try block must be required. That is catch without try is invalid.
+- Whenever we are writing finally block compulsory we should write try block. That is finally without try is invalid.
+- Inside try, catch and finally block we can declare try catch finally blocks. That is nesting of try, catch, finally is allowed.
+- For try, catch, finally block curly braces are mandatory.
+
+**Throw Keyword or statement or clause:**
+- Sometimes we can create exception object explicitly and handover to the JVM manually. for this we have to use throw keyword.
+- Hence, the main objective of throw keyword is to hand over our created exception object to the JVM manually.
+- Hence, the result of following two programs are same.
+- The resultant exception output is same in both default exception and throw exception. there is no difference but default 
+  exception happen internally but by using throw we are handling exception explicitly and hand over to JVM.
+
+`
+public static void main(String[] args)  {
+System.out.println(10/0);
+}
+O/P:Exception in thread "main" java.lang.ArithmeticException: / by zero
+at Main.main(Main.java:4)
+`
+- In this case main method is responsible to create exception object and hand over to the JVM.
+
+`
+public static void main(String[] args)  {
+throw new ArithmeticException("/ by zero");
+//new ArithmeticException("/ by zero"); - Creation of ArithmeticException Object manually
+//throw - Hand-over our created exception object to the JVM manually.
+}
+`
+- In this case programmer creating exception object explicitly and hand over to the JVM manually.
+
+**Note:** Best use of throw keyword is for User defined exception and Customised exceptions.
+**Case1:** 
+`
+public class Main{
+static ArithmeticException e;
+public static void main(String[] args) {
+throw e;
+}
+}
+O/P:Exception in thread "main" java.lang.NullPointerException: Cannot throw exception because "Main.e" is null
+at Main.main(Main.java:4)
+`
+- `throw e;`  if e refers null then we will get NullPointerException
+
+`
+public class Main{
+static ArithmeticException e = new ArithmeticException();
+public static void main(String[] args) {
+throw e;
+}
+}
+`
+- `throw e;` In this case we will get ArithmeticException.
+
+**Case2:**
+`
+public class Main{
+    public static void main(String[] args) {
+        throw new ArithmeticException();
+        System.out.println("Hello");
+    }
+}
+O/P: java: unreachable statement
+`
+- After throw statement we are not allowed to write any statement directly otherwise we will get compile time saying 
+  unreachable statement.
+
+`
+public class Main{
+public static void main(String[] args) {
+System.out.println(10/0);
+System.out.println("Hello");
+}
+}
+O/P: RE: AE: / by zero.
+`
+
+**Case3:**
+- We can use throw keyword only for throwable types.If we are trying to use for normal objects we will get compile time error
+  saying incompatible types.
+`
+  public class Main {
+  public static void main(String[] args) {
+  throw new Main();
+  }
+  }
+O/P: java: incompatible types: Main cannot be converted to java.lang.Throwable
+`
+
+`
+public class Main extends RuntimeException{
+public static void main(String[] args) {
+throw new Main();
+}
+}
+O/P: Exception in thread "main" Main
+at Main.main(Main.java:3)
+`
