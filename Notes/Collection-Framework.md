@@ -239,3 +239,183 @@ of individual objects.
 - Object getLast();
 - Object removeFirst();
 - Object removeLast();
+
+**Differences between ArrayList and LinkedList:**
+- AL: is the best choice if our frequent operation is retrieval operation.
+- LL: is the best choice if our frequent operation is insertion or deletion in the middle.
+- AL: is the worst choice if our frequent operation is insertion or deletion in the middle because internally several shift 
+  operations are performed.
+- LL: is the worst choice if our frequent operation is retrieval operation.
+- AL: in array list the elements will be stored in consecutive memory locations. and hence, retrieval operations will become
+  easy.
+- LL: In linked list the elements won't be stored in consecutive memory locations and hence, retrieval operations will 
+  become complex.
+
+**Vector:**
+- The underlying data structure is re-sizable array or growable array.
+- Duplicate objects are allowed.
+- Insertion order is preserved.
+- Heterogeneous objects are allowed.[Except TreeSet and TreeMap everywhere heterogeneous objects are allowed.]
+- null insertion is possible.
+- It implements Serializable, Cloneable, RandomAccess Interfaces
+- Every method present in the vector is synchronized and hence, vector object is thread safe.
+
+**Constructors:**
+- Vector v = new Vector(); creates an empty vector object with default initial capacity 10.
+- once vector reaches it max capacity then a new vector object will be created with `new capacity = current capacity * 2;`
+- Vector v = new Vector(int initialCapacity); creates an empty vector object with specified initial capacity.
+- Vector v = new Vector(int initialCapacity, int incrementalCapacity); 
+- Vector v = new Vector(Collection c); creates an equivalent vector object for the given collection. this constructor meant
+  for interconversion between collection objects.
+
+**Vector Specific Methods:**
+
+**To add objects:**
+- add(Object o) -> C
+- add(int index, Object o) -> L
+- addElement(Object 0) -> V
+
+**To Remove Objects:**
+- remove(Object o) -> C
+- removeElement(Object o) -> V
+- remove(int index) -> L
+- removeElementAt(int index) -> V
+- clear() -> C
+- removeAllElements() -> V
+
+**To Get Objects:**
+- Object get(int index) -> L
+- Object elementAt(int index) -> V
+- Object firstElement() -> V
+- Object lastElement() -> V
+
+**Other Methods:**
+- int size();
+- int capacity();
+- Enumeration elements();
+
+**Stack:**
+- It is the child class of Vector.
+- It is a specially designed class for last in first out order.
+
+**Constructor:**
+- Stack s = new Stack();
+
+**Methods:**
+- push(Object o)
+- Object pop() // to remove and return top of the stack
+- Object peek(); //return top of the stack without removal.
+- boolean empty();
+- int search(Object o); // return off-set(values start from top like 1, 2, 3) if available otherwise return -1.
+
+**The Three Cursors of JAVA:**
+- If we want to get objects one by one from the collection then we should go for cursor.
+- There are three types of cursor's available in java.
+1) Enumeration
+2) Iterator
+3) List Iterator
+
+**Enumeration:**
+- We can use enumeration to get objects one by one from legacy collection object.
+- We can create enumeration object by using elements method of vector class.
+- public Enumeration elements();
+- Enumeration e = v.elements();
+
+**Methods:**
+- public boolean hasMoreElements();
+- public Object nextElement();
+
+**Limitations of Enumeration:**
+- We can apply enumeration concepts for only legacy classes and, it's not a universal cursor.
+- By using enumeration we can get only read access and, we can't perform remove operation.
+- To overcome above limitations we should go for iterator.
+
+**Iterator(I):**
+- We can apply iterator concept for any collection object and hence, it is universal cursor.
+- By using iterator we can perform both read and remove operations.
+- We can create iterator object by using iterator method of collection interface.
+- public Iterator iterator()
+- Iterator itr = c.iterator(); // c is any collection object
+
+**Methods:**
+- public boolean hasNext()
+- public Object next()
+- public void remove()
+
+**Limitations of Iterator:**
+- By using enumeration and iterator we can always move only towards forward direction and, we can't move backward direction.
+  these are single directional cursor but not bi-directional cursors.
+- By using iterator we can perform only read and remove operations and, we can't perform replacement and addition of new objects.
+- To overcome above limitations we should go for list iterator.
+
+**ListIterator(I):**
+- By using list iterator we can move either to the forward direction or to the backward direction and hence, it is bi-directional 
+  cursor.
+- By using list iterator we can perform replacement and addition of new objects in addition to read and remove operations.
+- we can create list iterator by using list iterator method of list interface.
+- public ListIterator listIterator()
+- ListIterator lts = l.listIterator();
+
+**Methods:**
+- ListIterator is the child interface of Iterator and hence, all methods present in iterator interface is by default available
+  in the ListIterator.
+- ListIterator defines the following nine methods.
+1) public boolean hasNext()
+2) public Object next()
+3) public int nextIndex()
+4) public boolean hasPrevious()
+5) public Object previous()
+6) public int previousIndex()
+7) public void remove()
+8) public void set(Object o)
+9) public void add(Object o)
+
+**Note:** The most powerful cursor is ListIterator but, it's limitation is, it's applicable for only for List Objects.
+
+**Comparison table of Three Cursors:**
+
+**Internal Implementation of Cursors:**
+- Vector v = new Vector();
+- Enumeration e = v.elements();
+- Iterator itr = v,iterator();
+- ListIterator ltr = v.listIterator();
+- System.out.println(e.getClass().getName()); O/P: java.util.Vector$1
+- System.out.println(itr.getClass().getName()); O/P: java.util.Vector$Itr
+- System.out.println(ltr.getClass().getName()); O/P: java.util.Vector$ListItr
+
+**Set(I):**
+- Set is child interface of collection.
+- If we want to represent a group of individual objects as a single entity where duplicates are not allowed and insertion 
+  order not preserved.
+- Set interface doesn't contain any new method and, we have to use only collection interface methods.
+
+**HashSet(C):**
+- The underlying data structure is hash table.
+- Duplicate objects are not-allowed.
+- Insertion order is not preserved and, it is based on hash code of objects.
+- null insertion is possible.[Only once]
+- Heterogeneous objects are allowed.
+- Implements Serializable and Cloneable but not RandomAccess Interface.
+- HashSet is the best choice if our frequent operation is search operation.
+
+**Note:** In HashSet duplicates are not allowed if we are trying to insert duplicates then we won't get any compile time 
+or runtime error's and add method simply return's false.
+
+- HashSet h = new HashSet();
+- h.add("A"); //true
+- h.add("A"); //false
+
+**Constructors:**
+- HashSet h = new HashSet(); creates an empty hash set object with default initial capacity 16. and default fill ratio 0.75.
+- HashSet h = new HashSet(int initialCapacity); creates an empty hash set object with specified initial capacity and default 
+  fill ratio 0.75.
+- HashSet h = new HashSet(int initialCapacity, float fillRatio); //0.9
+- HashSet h = new HashSet(Collection c); creates an equivalent HashSet for the given collection. this constructor meant
+  for interconversion between collection objects.
+
+**Fill Ratio or Load Factor:**
+- After filling how much ratio a new HashSet object will be created, This ratio is called fill ratio or load factor.
+- for Ex: Fill Ratio 0.75 means after filling 75% ratio a new hash set object will be created.
+
+**LinkedHashSet(C):**
+- 
