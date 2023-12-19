@@ -418,4 +418,177 @@ or runtime error's and add method simply return's false.
 - for Ex: Fill Ratio 0.75 means after filling 75% ratio a new hash set object will be created.
 
 **LinkedHashSet(C):**
-- 
+- It is the child class of HashSet.
+- It is exactly same as HashSet[Including constructors and methods] except the following differences.
+
+- **HS:** The underlying data structure is Hash Table.
+- **LHS:** The underlying data structure is a combination of LinkedList + Hash Table.
+- **HS:** Insertion order not preserved.
+- **LHS:** Insertion order preserved.
+- **HS:** Introduced in 1.2 version.
+- **LHS:** Introduced in 1.4 version.
+
+- In the above program if we replace HashSet with LinkedHashSet then the output is same as insertion order.
+- That is insertion order preserved.
+
+**Note:** In general we can use LinkedHashSet to develop cache based application where duplicates are not allowed and insertion 
+order preserved.
+
+**SortedSet(I):**
+- SortedSet is the child interface of set.
+- If we want to represent a group of individual objects according to some sorting order without duplicates. then we should 
+  go for sorted set.
+- SortedSet interface defines the following specific methods.
+1) Object first(); // returns first element
+2) Object last(); // returns last element
+3) SortedSet tailSet();
+4) SortedSet headSet();
+5) SortedSet subSet();
+6) Comparator comparator(); // describes underlying sorting technique. If we are using default natural sorting order then 
+  we will get null.
+
+**Note:** The default natural sorting order for numbers ascending order and for string objects alphabetical order.
+
+**TreeSet(C):**
+- The underlying data structure is balanced tree.
+- Duplicate objects are not allowed.
+- Insertion order not preserved.Heterogeneous objects are not allowed. otherwise, we will get runtime exception saying class
+  case exception.
+- null insertion possible[only once].
+- TreeSet Implements serializable and cloneable but not RandomAccess.
+- All objects will be inserted based on some sorting order. it may be default natural sorting order or customised sorting order.
+
+**Constructors:**
+- TreeSet t = new TreeSet(); //No arg constructor meant for creating empty TreeSet object where the elements will be inserted 
+  into Default natural sorting order.
+- TreeSet t = new TreeSet(Comparator c); // Creates an empty tree set object where the elements will be inserted according 
+  to customised sorting order specified by comparator object.
+- TreeSet t = new TreeSet(Collection c);
+- TreeSet t = new TreeSet(SortedSet s);
+
+null Acceptance:
+- for non-empty tree set if we are trying to insert null then we will get null pointer exception.
+- For empty tree set as the first element null is allowed. but after inserting that null if we are trying to insert any 
+  other, then we will get runtime exception saying NPE.
+
+**Note:** Until 1.6v null is allowed as the first element to the empty tree set but from 1.7v onwards null is not allowed 
+even as the first element. that is null such type of story not applicable for tree set from 1.7v onwards.
+
+- If we are, depending on default natural sorting order compulsory the object should be homogenous and comparable. Otherwise,
+  we will get run time exception saying class case exception.
+- An object is said to be comparable if and only if corresponding class implements comparable interface.
+- String class and all wrapper classes already implement comparable interface. but StringBuffer class doesn't implement 
+  comparable interface. Hence, we got class cast exception in the above example.
+
+**Comparable(I):**
+- it is present in java.lang package. and it contains only one method compareTo();
+- public int compareTo(Object obj); // obj1 > obj2, obj1 < obj2, obj1 == obj2
+- obj1.compareTo(obj2); // obj1 - the object which is to be inserted.
+- `return -ve if obj1 has to come before obj2` 
+- `return +ve if obj1 has to come after obj2` 
+- `return 0 if obj1 & obj2 are equal.`
+
+- If we are, depending on default natural sorting order then while adding objects into the tree set JVM will call compareTo(); method.
+
+**Note:** If default natural sorting order not available or if we are not satisfied with default natural sorting order then
+we can go for customised sorting by comparator.
+
+- Comparable meant for default natural sorting order whereas comparator meant for customised sorting order.
+
+**Comparator(I):**
+- Comparator present in java.util package.
+- It contains two methods compare() and equals().
+- public int compare(Object obj1, Object obj2);
+- `return -ve if obj1 has to come before obj2`
+- `return +ve if obj1 has to come after obj2`
+- `return 0 if obj1 & obj2 are equal.`
+- public boolean equals(Object obj)
+- Whenever we are implementing comparator interface compulsory we should provide implementation only for compare method.
+  and we are not required to provide implementation for equals method. because it is already available to our class from 
+  object class through inheritance.
+
+Write a program to insert integer objects into the tree set where the sorting order is descending order.
+- TreeSet t = new TreeSet(new MyComparator); - in this line if we not pass comparator object then internally JVM call compareTo()
+  method which is meant for default natural sorting order.
+- In this case the output is [0, 5, 10, 15, 20].
+- At line if we are passing comparator object then JVM will call compare method which is meant for customised sorting. in 
+  this case output is [20, 15, 10, 5, 0].
+
+**Various possible implementations of compare method:**
+
+Note: If we are depending on default natural sorting order then compulsory the objects should be homogeneous and comparable
+otherwise we will get run time exception saying ClassCastException.
+- If we are defining our own sorting by comparator then objects need not be comparable and homogeneous. that is we can add
+  heterogeneous non-comparable objects also.
+
+Write a program to insert String and String buffer objects into tree set where sorting order is increasing length order.
+- If two objects having same length then consider their alphabetical order.
+
+**Comparable vs Comparator:**
+1) For pre-defined comparable classes[String etc] default natural sorting order already available. if we are not satisfied with that 
+  default natural sorting order then wee can define our own sorting by using comparator.
+2) For predefined non-comparable classes[like StringBuffer] default natural sorting order not already available. we can
+  define our own sorting by using comparator.
+3) For our own classes like employee, the person who is writing the class is responsible to define default natural sorting
+  order by implementing comparable interface.
+4) The person who is using our class, if he is not satisfy with default natural sorting order then he can define his own 
+  sorting by using comparator.
+
+**Note:** The only implemented classes of Comparator are Collator and RuleBasedCollator.
+- The pre-defined classes which implements comparable is String and all wrapper classes.
+
+**Comparison table of Set implemented classes:**
+
+
+**Map(I):**
+- Map is not child interface of collection.
+- If we want to represent a group of objects as key value pairs then we should go for map.
+- Both keys and values are objects only. 
+- Duplicate keys are not allowed but values can be duplicated.
+- Each key, value pair is called Entry. Hence, Map is considered as a collection of entry objects.
+
+**Map Interface methods:**
+- Object put(Object key, Object value) - to add one key, value pair to the map.
+- If the key already present then old value will be replaced with new value and returns old value.
+
+**Entry Interface:**
+- A Map is a group of key value pairs and each key, value pair is called an entry. Hence, Map is considered as a collection 
+  of entry objects.
+- Without existing map object there is no chance of existing entry object. hence, entry interface is defined inside map interface.
+- **Entry specific methods:** 
+1) Object getKey()
+2) Object getCValue()
+3) Object setValue(Object new Obj)
+
+**HashMap:**
+- The underlying data structure is HashTable.
+- Insertion order is not preserved and, it is based on hash code of keys.
+- Duplicate keys are not allowed but values can be duplicated.
+- Heterogeneous objects are allowed for both key and value.
+- null is allowed for key[Only once]. null is allowed for values[Any number of times].
+- HashMap implements serializable and cloneable interfaces but not RandomAccess.
+- HashMap is the best choice if our frequent operation is search operation.
+
+**Constructors:**
+- HashMap m = new HashMap(); creates an empty HashMap object with default initial capacity 16 and default fill ratio is 0.75.
+- HashMap m = new HashMap(int initialCapacity); creates an empty HashMap object with specified initial capacity and default fill ratio.
+- HashMap m = new HashMap(int initialCapacity, float fillRatio);
+- HashMap m = new HashMap(Map m);
+
+**Differences between HashMap and HashTable:**
+- HM: Every method present in HashMap is not synchronized.
+- HT: Every method present in HashTable is synchronized.
+- HM: At a time multiple threads are allowed to operate on HashMap object and hence, it is not thread safe.
+- HT: At a time only one thread is allowed to operate on HashTable object and hence, it is thread safe.
+- HM: Relatively performance is high because threads are not required to wait to operate on hash map object.
+- HT: Relatively performance is low because threads are required to wait to operate on hash map object.
+- HM: null is allowed for both key and value.
+- HT: null is not allowed for keys and values. Otherwise, we will get NPE.
+- HM: Introduced in 1.2v and, it is not legacy.
+- HT: Introduced in 1.0v and. it is legacy.
+
+**How to get synchronized version of HashMap object:**
+- by default hash map is non synchronized. but we can get synchronized version of hash map by using synchronisedMap(); of 
+  collections class.
+- HashMap m = new HashMap();
+- HashMap m1 = Collections,synchronizedMap(m)
